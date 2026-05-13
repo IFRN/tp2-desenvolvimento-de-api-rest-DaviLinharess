@@ -4,9 +4,20 @@ from django_filters.rest_framework import DjangoFilterBackend
 from .models import (Eleitor, Eleicao, Candidato, AptidaoEleitor, RegistroVotacao, Voto)
 from .serializers import (EleitorSerializer, EleicaoSerializer, CandidatoSerializer, AptidaoEleitorSerializer, RegistroVotacaoSerializer, VotoSerializer)
 
+#Imports pro Commit 4
+import hashlib
+import secrets
+import qrcode
+
+from django.db import IntegrityError
+from django.http import HttpResponse
+
+from rest_framework.decorators import action, api_view
+from rest_framework.response import Response
+from rest_framework import status
+
+
 # Create your views here.
-
-
 class EleitorViewSet(viewsets.ModelViewSet):
     queryset = Eleitor.objects.all()
     serializer_class = EleitorSerializer
